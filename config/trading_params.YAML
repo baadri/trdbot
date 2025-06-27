@@ -1,0 +1,99 @@
+# Risk Management
+risk_management:
+  max_risk_per_trade: 0.02  # 2% of balance
+  max_daily_risk: 0.06      # 6% of balance
+  max_drawdown: 0.20        # 20% maximum drawdown
+  position_sizing: "kelly"   # kelly, fixed, percentage
+  
+  stop_loss:
+    percentage: 0.01  # 1% stop loss
+    atr_multiplier: 2.0
+    trailing_enabled: true
+  
+  take_profit:
+    tp1:
+      percentage: 0.015  # 1.5% (R:R 1:1.5)
+      close_percentage: 0.33  # Close 33% of position
+    tp2:
+      percentage: 0.03   # 3% (R:R 1:3)
+      close_percentage: 0.33  # Close 33% of position
+    tp3:
+      percentage: 0.05   # 5% (R:R 1:5)
+      close_percentage: 0.34  # Close remaining 34%
+
+# Signal Generation
+signal_generation:
+  min_confidence: 75.0
+  max_signals_per_hour: 5
+  cooldown_minutes: 30
+  
+  # Multi-timeframe confirmation
+  timeframe_confirmation:
+    primary: "1h"
+    confirmation: ["4h", "1d"]
+    weight_primary: 0.6
+    weight_confirmation: 0.4
+  
+  # Volume confirmation
+  volume_confirmation:
+    min_volume_increase: 1.5  # 50% above average
+    volume_timeframe: "1h"
+
+# Technical Indicators
+technical_indicators:
+  trend:
+    ema_periods: [9, 21, 55, 200]
+    sma_periods: [20, 50, 200]
+    macd: [12, 26, 9]
+    adx_period: 14
+    ichimoku: [9, 26, 52, 26]
+  
+  momentum:
+    rsi_period: 14
+    rsi_oversold: 30
+    rsi_overbought: 70
+    stochastic: [14, 3, 3]
+    williams_r_period: 14
+    cci_period: 20
+  
+  volatility:
+    bollinger_bands: [20, 2]
+    atr_period: 14
+    keltner_channels: [20, 10]
+  
+  volume:
+    obv_enabled: true
+    mfi_period: 14
+    vwap_enabled: true
+    volume_sma_period: 20
+
+# Backtesting
+backtesting:
+  start_date: "2020-01-01"
+  end_date: "2024-01-01"
+  initial_balance: 10000
+  commission: 0.001  # 0.1%
+  slippage: 0.0005   # 0.05%
+
+# Performance Metrics
+performance_metrics:
+  target_sharpe_ratio: 1.5
+  target_win_rate: 0.60
+  target_profit_factor: 2.0
+  max_consecutive_losses: 5
+
+# Notification Settings
+notifications:
+  telegram:
+    enabled: true
+    signal_alerts: true
+    performance_reports: true
+    error_alerts: true
+    daily_summary: true
+    summary_time: "23:00"  # UTC
+  
+  dashboard:
+    enabled: true
+    port: 8050
+    host: "0.0.0.0"
+    refresh_interval: 5  # seconds
