@@ -1,0 +1,40 @@
+# Core dependencies
+ccxt==4.2.0
+pandas==2.1.4
+numpy==1.24.3
+asyncio-mqtt==0.16.1
+aiohttp==3.9.1
+pyyaml==6.0.1
+
+# Machine Learning
+tensorflow==2.15.0
+torch==2.1.2
+torchvision==0.16.2
+scikit-learn==1.3.2
+xgboost==2.0.3
+transformers==4.36.2
+
+# Technical Analysis
+ta-lib==0.4.28
+pandas-ta==0.3.14b0
+
+# Visualization
+plotly==5.17.0
+dash==2.16.1
+dash-bootstrap-components==1.5.0
+
+# Telegram Bot
+python-telegram-bot==20.7
+
+# Database
+sqlite3
+
+# Data processing
+joblib==1.3.2
+scipy==1.11.4
+
+# Development
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.11.0
+flake8==6.1.0
