@@ -1,0 +1,7 @@
+"""
+Data Pipeline Module
+Handles data collection, streaming, and validation
+"""
+
+__version__ = "1.0.0"
+__author__ = "baadri"
